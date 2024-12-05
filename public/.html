@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Features with Total Count</title>
+  <style>
+    .category {
+      margin-bottom: 16px;
+      padding: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .category h2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feature-card {
+      border: 1px solid #ddd;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 4px;
+    }
+    #total-count {
+      margin-bottom: 16px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Total fitur -->
+  <div id="total-count">Total Features: 0</div>
+
+  <!-- Div kategori yang sudah ada -->
+  <div id="ai" class="category">
+    <h2>AI <span id="ai-count">(0)</span></h2>
+  </div>
+  <div id="data-analysis" class="category">
+    <h2>Data Analysis <span id="data-analysis-count">(0)</span></h2>
+  </div>
+  <div id="other-category" class="category">
+    <h2>Other Category <span id="other-category-count">(0)</span></h2>
+  </div>
+
+  <script>
+    // Data fitur yang akan ditambahkan
+    const features = [
+      {
+        name: "OpenAI",
+        method: "GET",
+        description: "AI/openai",
+        category: "AI",
+        endpoint: "../api",
+        query: "s=openai&text=Hai%20kamu"
+      },
+      {
+        name: "Data Analysis Tool",
+        method: "POST",
+        description: "Tool untuk analisis data",
+        category: "Data Analysis",
+        endpoint: "/api/data-tool",
+        query: "s=data&text=Analyze"
+      },
+      {
+        name: "Other Feature",
+        method: "PUT",
+        description: "Fitur lain di kategori lain",
+        category: "Other Category",
+        endpoint: "/api/other",
+        query: "s=other&text=Hello"
+      },
+      {
+        name: "Another AI Tool",
+        method: "POST",
+        description: "Fitur tambahan di AI",
+        category: "AI",
+        endpoint: "/api/ai-tool",
+        query: "s=ai-tool&text=HelloAI"
+      }
+    ];
+
+    // Fungsi untuk menambahkan fitur ke div berdasarkan kategori
+    function addFeaturesToDiv(features) {
+      const categoryCounts = {};
+      let totalFeatures = 0; // Variabel untuk menghitung semua fitur
+
+      features.forEach(feature => {
+        // Format ID div sesuai dengan kategori
+        const categoryId = feature.category.toLowerCase().replace(/\s+/g, '-');
+        const categoryDiv = document.getElementById(categoryId);
+
+        // Jika div untuk kategori ada, tambahkan fitur ke dalamnya
+        if (categoryDiv) {
+          const featureCard = document.createElement('div');
+          featureCard.className = 'feature-card';
+          featureCard.innerHTML = `
+            <h3>${feature.name}</h3>
+            <p><strong>Method:</strong> ${feature.method}</p>
+            <p><strong>Description:</strong> ${feature.description}</p>
+            <p><strong>Endpoint:</strong> ${feature.endpoint}</p>
+            <p><strong>Query:</strong> ${feature.query}</p>
+          `;
+
+          // Tambahkan kartu fitur ke div kategori
+          categoryDiv.appendChild(featureCard);
+
+          // Hitung jumlah fitur per kategori
+          if (!categoryCounts[categoryId]) {
+            categoryCounts[categoryId] = 0;
+          }
+          categoryCounts[categoryId]++;
+        } else {
+          console.warn(`Div dengan ID "${categoryId}" tidak ditemukan untuk kategori "${feature.category}".`);
+        }
+
+        // Tambahkan ke total fitur
+        totalFeatures++;
+      });
+
+      // Update total fitur di setiap kategori
+      Object.keys(categoryCounts).forEach(categoryId => {
+        const countSpan = document.getElementById(`${categoryId}-count`);
+        if (countSpan) {
+          countSpan.textContent = `(${categoryCounts[categoryId]})`;
+        }
+      });
+
+      // Update total semua fitur
+      const totalCountDiv = document.getElementById('total-count');
+      totalCountDiv.textContent = `Total Features: ${totalFeatures}`;
+    }
+
+    // Tambahkan fitur ke div yang sesuai
+    addFeaturesToDiv(features);
+  </script>
+</body>
+</html>
