@@ -1,19 +1,21 @@
 const features = [
 {
 name: "Open AI",
+method: "GET",
 category: "ai",
 endpoint: "/api/other",
 query: "s=other&text=Hello"
 },
 {
 name: "Rumah sakit",
+method: "GET",
 category: "search",
 endpoint: "/api/other",
 query: "s=other&text=Hello"
 }
 ];
 
-function redirectToEndpoint(endpoint, query) {
+function redirectToEndpoint(endpoint, query, methodists) {
   const fullUrl = `${endpoint}?${query}`;
 
   if (method === "GET") {
@@ -46,7 +48,7 @@ const categoryDiv = document.getElementById(categoryId);
 if (categoryDiv) {
 const featureCard = document.createElement('div');
 featureCard.className = 'feature-card';
-featureCard.innerHTML = `<a class="collapse-item" target="_blank" onclick="redirectToEndpoint('${feature.endpoint}', '${feature.query}')" >${feature.name}</a>
+featureCard.innerHTML = `<a class="collapse-item" target="_blank" href="redirectToEndpoint('${feature.endpoint}', '${feature.query}', '${feature.method}')" >${feature.name}</a>
 `;
 // Tambahkan kartu fitur ke div kategori
 categoryDiv.appendChild(featureCard);
