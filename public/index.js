@@ -1,77 +1,107 @@
 const features = [
-{
-name: "Open AI",
-method: "GET",
-category: "ai",
-endpoint: "/api/other",
-query: "s=other&text=Hello"
-},
-{
-name: "Rumah sakit",
-method: "GET",
-category: "search",
-endpoint: "/api/other",
-query: "s=other&text=Hello"
-}
-];
+      {
+        name: "OpenAI",
+        method: "GET",
+        description: "AI/openai",
+        category: "AI",
+        endpoint: "../api",
+        query: "s=openai&text=Hai%20kamu"
+      }
+    ];
 
-function redirectToEndpoint(endpoint, query, methodists) {
-  const fullUrl = `${endpoint}?${query}`;
+    const folders = [
+      { name: "AI", icon: "fas fa-brain", info: "Artificial Intelligence related features" }
+    ];
 
-  if (method === "GET") {
-    window.open(fullUrl, "_blank");
-  } else if (method === "POST") {
-    const data = Object.fromEntries(new URLSearchParams(query));
-    axios.post(endpoint, data)
-      .then((response) => {
-        console.log("Response:", response.data);
-        alert("Request berhasil! Lihat konsol untuk respons.");
-      })
-      .catch((error) => {
-        console.error("Error:", error.message);
-        if (error.response) {
-          console.error("Detail Error:", error.response.data);
-        }
-        alert("Terjadi kesalahan! Lihat konsol untuk detail.");
+    // Render Folders
+    function renderFolders() {
+      const foldersContainer = document.getElementById('folders-container');
+      folders.forEach(folder => {
+        const folderDiv = document.createElement('div');
+        folderDiv.classList.add('folder-card');
+
+        folderDiv.innerHTML = `
+          <div class="folder-name">
+            <i class="${folder.icon}"></i>${folder.name}
+          </div>
+          <div class="folder-action">
+            <button onclick="showFeatures('${folder.name}')">Open</button>
+          </div>
+        `;
+        foldersContainer.appendChild(folderDiv);
       });
-  }
-}
-
-function addFeaturesToDiv(features) {
-const categoryCounts = {};
-let totalFeatures = 0; 
-features.forEach(feature => {
-const categoryId = feature.category.toLowerCase().replace(/\s+/g, '-');
-const categoryDiv = document.getElementById(categoryId);
-
-// Jika div untuk kategori ada, tambahkan fitur ke dalamnya
-if (categoryDiv) {
-const featureCard = document.createElement('div');
-featureCard.className = 'feature-card';
-featureCard.innerHTML = `<a class="collapse-item" target="_blank" href="redirectToEndpoint('${feature.endpoint}', '${feature.query}', '${feature.method}')" >${feature.name}</a>
-`;
-// Tambahkan kartu fitur ke div kategori
-categoryDiv.appendChild(featureCard);
-
-if (!categoryCounts[categoryId]) {
-categoryCounts[categoryId] = 0;
-}
-categoryCounts[categoryId]++;
-} else {
-console.warn(`Error cok.`);
-}
-totalFeatures++;
-});
-
-Object.keys(categoryCounts).forEach(categoryId => {
-const countSpan = document.getElementById(`${categoryId}-count`);
-if (countSpan) {
-countSpan.textContent = ` ${categoryCounts[categoryId]}`;
-}
-});
-
-const totalCountDiv = document.getElementById('total-count');
-totalCountDiv.innerHTML = `<span>Total Feature: ${totalFeatures}</span>`;
     }
-// Tambahkan fitur ke div yang sesuai
-addFeaturesToDiv(features);
+
+    // Show Folder Features and Information
+// Show or Hide Folder Features and Information
+function showFeatures(folderName) {
+  const featuresContainer = document.getElementById('features-container');
+  const infoSection = document.getElementById('info-section');
+  const infoText = document.getElementById('info-text');
+
+  // Toggle visibility
+  if (featuresContainer.style.display === 'block' && infoText.innerText.includes(folderName)) {
+    // Hide the section if already open and the same folder is clicked
+    featuresContainer.style.display = 'none';
+    infoSection.style.display = 'none';
+    return;
+  }
+
+  // Show the info section with folder description
+  const folder = folders.find(f => f.name === folderName);
+  infoText.innerText = folder ? folder.info : 'No information available';
+  infoSection.style.display = 'block';
+
+  // Show the features related to the folder
+  const filteredFeatures = features.filter(f => f.category === folderName);
+
+  const featuresTableBody = document.getElementById('featuresTable-body');
+  featuresTableBody.innerHTML = '';
+
+  filteredFeatures.forEach((feature, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${feature.name}</td>
+      <td>${feature.method}</td>
+      <td><button class="action-button" onclick="redirectToEndpoint('${feature.endpoint}', '${feature.query}', '${feature.method}')">Open</button></td>
+    `;
+    featuresTableBody.appendChild(row);
+  });
+
+  // Display the features table
+  featuresContainer.style.display = 'block';
+}
+
+    // Redirect to Endpoint
+    function redirectToEndpoint(endpoint, query, method) {
+      if (method === "GET") {
+        window.open(`${endpoint}?${query}`, "_blank");
+      } else if (method === "POST") {
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: query })
+        }).then(response => response.json())
+          .then(data => console.log(data))
+          .catch(error => console.error('Error:', error));
+      }
+    }
+
+    // Search Function
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const rows = document.querySelectorAll('#featuresTable-body tr');
+
+      rows.forEach(row => {
+        const featureName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        if (featureName.includes(searchTerm)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+// Initial Render
+renderFolders();

@@ -8,13 +8,12 @@
   <!-- Font Awesome CDN for icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/nav.css">
-<link rel="stylesheet" href="assets/css/card.css">
-<link rel="stylesheet" href="assets/css/body.css">
-<link rel="stylesheet" href="https://api.arifzyn.tech/css/styles.css">
+<link rel="stylesheet" href="assets/css/feature.css">
 </head>
 <body>
 <header class="header">
@@ -40,28 +39,43 @@
             </div>
          </nav>
       </header>
-<main class="container mx-200 flex-grow relative space-y-6 py-300 sm:px-6 lg:px-8 mt-20">
-    <div class="container mx-auto mb-5">
-  <!-- Summary Section -->
-  <div id="summary" class="stagger-children flex flex-col bg-gray-900 dark:border-neutral-700 dark shadow-neutral-700/70 p-3 mt-4 rounded-lg mb-10">
-    <h2 class="text-black dark:text-white text-lg font-semibold uppercase mb-2">Summary</h2>
-    <div class="flex justify-between items-center space-x-4">
-      <div class="border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-4 rounded-md w-1/3 text-center">
-        <h3 class="text-yellow-400 text-2xl font-bold">10</h3>
-        <p class="text-gray-700 dark:text-gray-300 text-sm">Total Categories</p>
-      </div>
-      <div class="border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-4 rounded-md w-1/3 text-center">
-        <h3 class="text-blue-400 text-2xl font-bold">160</h3>
-        <p class="text-gray-700 dark:text-gray-300 text-sm">Available Features</p>
-      </div>
-      <div class="border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-4 rounded-md w-1/3 text-center">
-        <h3 class="text-green-400 text-2xl font-bold">160</h3>
-        <p class="text-gray-700 dark:text-gray-300 text-sm">New Features Add</p>
+  <div class="container">
+    <!-- Folders Section -->
+    <div class="folders-section">
+      <h2>FOLDERS</h2>
+      <div class="grid grid-cols-1 gap-3" id="folders-container">
+        <!-- Folders will be dynamically generated here -->
       </div>
     </div>
+
+    <!-- Features Section -->
+    <div id="features-container" class="features-table-container">
+      <h2>FEATURES</h2>
+      <div class="relative">
+        <input id="searchInput" type="text" class="search-bar" placeholder="Search for features...">
+      </div>
+      <table id="featuresTable" class="table-auto w-full bg-white dark:bg-gray-900 rounded-lg text-sm">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Method</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="featuresTable-body">
+          <!-- Features rows will be populated here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Info Section (New separate card for Information) -->
+    <div id="info-section" class="info-section">
+      <h3>Folder Information</h3>
+      <p id="info-text">Select a folder to view more details.</p>
+    </div>
   </div>
-</div>
-</main>
 <script src="assets/js/nav.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
