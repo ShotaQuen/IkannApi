@@ -1,5 +1,4 @@
 const axios = require('axios')
-const { komiku, mcpedl, CarbonifyV1, CarbonifyV2, imagetohd, remini, recolor, dehaze, removeBg, Andro1, animeSrc, Cerpen, Apkpure, liteApks, Ytdl, Ddownr, terabox, Playstore, antaraNews } = require('./lib/scraper')
 
 async function handler(req, res) {
 const { s, text, text1, avatar, username, url } = req.query;
@@ -14,24 +13,18 @@ return res.status(200).json({
 status: true,
 result: response.data.data.result,
 });
-}
-
-//Search Menu
-else if (s === 'google') { // GOOGLE
-const response = await axios.get(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(text)}&key=AIzaSyAajE2Y-Kgl8bjPyFvHQ-PgRUSMWgBEsSk&cx=e5c2be9c3f94c4bbb`);
-const items = response.data.items;
-if (items && items.length > 0) {
-return res.json({
+} else if (s === 'blackbox') { // BLACKBOX
+const requestData = {
+content: text,
+cName: "S-AI",
+cID: "S-AIbAQ0HcC"
+};
+const response = await axios.post('https://luminai.my.id/', requestData);
+const sai = response.data;
+const pe = sai.result;
+return res.status(200).json({
 status: true,
-data: items.map(item => ({
-title: item.title,
-description: item.snippet,
-link: item.link,
-})),
-})}
-return res.json({
-status: false,
-data: 'No results found',
+result: pe,
 });
 }
 

@@ -1,12 +1,20 @@
 const features = [
-      {
-        name: "OpenAI",
-        method: "GET",
-        description: "AI/openai",
-        category: "AI",
-        endpoint: "../api",
-        query: "s=openai&text=Hai%20kamu"
-      }
+    {
+    name: "OpenAI",
+    method: "GET",
+    description: "AI/openai",
+    category: "AI",
+    endpoint: "../api",
+    query: "s=openai&text=Hai%20kamu"
+    },
+    {
+    name: "BlackBox",
+    method: "GET",
+    description: "AI/blackbox",
+    category: "AI",
+    endpoint: "../api",
+    query: "s=blackbox&text=Hai%20kamu"
+  }
     ];
 
     const folders = [
