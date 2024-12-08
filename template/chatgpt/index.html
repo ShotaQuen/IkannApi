@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Features Manager</h1>
+        <p>Total Features: <span id="totalFeatures"></span></p>
+        <input type="text" id="searchInput" placeholder="Search features...">
+    </header>
+
+    <main>
+        <section id="folders-container" class="folders-container"></section>
+        
+        <section id="info-section" style="display: none;">
+            <h2>Folder Information</h2>
+            <p id="info-text"></p>
+        </section>
+
+        <section id="features-container" style="display: none;">
+            <h2>Features</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Method</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="featuresTable-body"></tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

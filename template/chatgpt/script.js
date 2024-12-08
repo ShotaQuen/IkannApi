@@ -197,10 +197,6 @@ function renderFolders() {
 }
 
 // Total Features
-const totalFolders = folders.length;
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("totalFolders").textContent = `${totalFolders}`;
-});
 const totalFeature = features.length;
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("totalFeatures").textContent = `${totalFeature}`;
