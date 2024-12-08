@@ -21,7 +21,7 @@ const features = [
     description: "ANIME SEARCH",
     category: "ANIME",
     endpoint: "../api",
-    query: "s=otakudetail&url=anime"
+    query: "s=otakudetail&url=https://otakudesu.cloud/lengkap/btr-nng-sub-indo-part-1"
   }
     ];
 
