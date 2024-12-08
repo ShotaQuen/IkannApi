@@ -16,6 +16,150 @@ const features = [
     query: "s=blackbox&text=Hai%20kamu"
   },
   {
+    name: "Tebak Gambar",
+    method: "GET",
+    description: "Games/tebakgambar",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakgambar"
+  },
+  {
+    name: "Tebak HeroML",
+    method: "GET",
+    description: "Games/tebakheroml",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakheroml"
+  },
+  {
+    name: "Tebak JKT",
+    method: "GET",
+    description: "Games/tebakjkt",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakjkt"
+  },
+  {
+    name: "Tebak Hewan",
+    method: "GET",
+    description: "Games/tebakhewan",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakhewan"
+  },
+  {
+    name: "Tebak Game",
+    method: "GET",
+    description: "Games/tebakgame",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakgame"
+  },
+  {
+    name: "Tebak Bendera",
+    method: "GET",
+    description: "Games/tebakbendera",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakbendera"
+  },
+  {
+    name: "Tebak Lagu",
+    method: "GET",
+    description: "Games/tebaklagu",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebaklagu"
+  },
+  {
+    name: "Tebak Lirik",
+    method: "GET",
+    description: "Games/tebaklirik",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebaklirik"
+  },
+  {
+    name: "Tebak Kalimat",
+    method: "GET",
+    description: "Games/tebakkalimat",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakkalimat"
+  },
+  {
+    name: "Tebak Kata",
+    method: "GET",
+    description: "Games/tebakkata",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakkata"
+  },
+  {
+    name: "Tebak Kimia",
+    method: "GET",
+    description: "Games/tebakkimia",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebakkimia"
+  },
+  {
+    name: "Tebak Logo",
+    method: "GET",
+    description: "Games/tebaklogo",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebaklogo"
+  },
+  {
+    name: "Tebak Kabupaten",
+    method: "GET",
+    description: "Games/tkabupaten",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tkabupaten"
+  },
+  {
+    name: "Tebak Tebakan",
+    method: "GET",
+    description: "Games/tebaktebakan",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=tebaktebakan"
+  },
+  {
+    name: "Family100",
+    method: "GET",
+    description: "Games/family100",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=family100"
+  },
+  {
+    name: "Cak Lontong",
+    method: "GET",
+    description: "Games/caklontong",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=caklontong"
+  },
+  {
+    name: "Susun Kata",
+    method: "GET",
+    description: "Games/susunkata",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=susunkata"
+  },
+  {
+    name: "Asah Otak",
+    method: "GET",
+    description: "Games/asahotak",
+    category: "GAMES",
+    endpoint: "../api",
+    query: "s=asahotak"
+  },
+  {
     name: "OtakuDetail",
     method: "GET",
     description: "ANIME SEARCH",
@@ -27,7 +171,8 @@ const features = [
 
     const folders = [
       { name: "AI", icon: "fas fa-brain", info: "Artificial Intelligence related features" },
-      { name: "ANIME", icon: "fas fa-ghost", info: "Anime features" }
+      { name: "GAMES", icon: "fas fa-gamepad", info: "Game related features" },
+      { name: "ANIME", icon: "fas fa-ghost", info: "Anime related features" }
     ];
 
     // Render Folders
