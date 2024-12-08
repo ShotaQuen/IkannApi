@@ -1,4 +1,7 @@
 const axios = require('axios')
+const {
+otakuDetail
+} = require('./lib/scraper')
 
 async function handler(req, res) {
 const { s, text, text1, avatar, username, url } = req.query;
@@ -25,6 +28,15 @@ const pe = sai.result;
 return res.status(200).json({
 status: true,
 result: pe,
+});
+}
+
+// ANIME MENU
+else if (s === 'otakuDetail') { // OTAKUDETAIL
+const response = await otakuDetail(`${encodeURIComponent(url)}`)
+return res.status(200).json({
+status: true,
+data: response,
 });
 }
 

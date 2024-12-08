@@ -14,11 +14,20 @@ const features = [
     category: "AI",
     endpoint: "../api",
     query: "s=blackbox&text=Hai%20kamu"
+  },
+  {
+    name: "OtakuDetail",
+    method: "GET",
+    description: "ANIME SEARCH",
+    category: "ANIME",
+    endpoint: "../api",
+    query: "s=otakudetail&url=anime"
   }
     ];
 
     const folders = [
-      { name: "AI", icon: "fas fa-brain", info: "Artificial Intelligence related features" }
+      { name: "AI", icon: "fas fa-brain", info: "Artificial Intelligence related features" },
+      { name: "ANIME", icon: "fas fa-ghost", info: "Anime features" }
     ];
 
     // Render Folders
