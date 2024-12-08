@@ -1,6 +1,5 @@
 const axios = require('axios')
 const {
-otakuDetail
 } = require('./lib/scraper')
 
 async function handler(req, res) {
@@ -32,11 +31,12 @@ result: pe,
 }
 
 // ANIME MENU
-else if (s === 'otakuDetail') { // OTAKUDETAIL
-const response = await otakuDetail(`${encodeURIComponent(url)}`)
+else if (s === 'otakudesu-detail') { // OTKD-DETAIL
+const response = await axios.get(`https://api.siputzx.my.id/api/anime/otakudesu/detail?url=${url}`
+);
 return res.status(200).json({
 status: true,
-data: response,
+data: response.data.data,
 });
 }
 
