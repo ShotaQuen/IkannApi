@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Lokal</title>
-</head>
-<body>
-    <h1>IP Address Lokal Anda</h1>
-    <p id="ip-address">Mengambil IP...</p>
-
-    <script>
-        async function getLocalIP() {
+async function getLocalIP() {
             const pc = new RTCPeerConnection();
             pc.createDataChannel('');
             pc.createOffer().then(offer => pc.setLocalDescription(offer));
@@ -19,7 +7,7 @@
                 if (!event.candidate) return;
                 const ip = /([0-9]{1,3}\.){3}[0-9]{1,3}/.exec(event.candidate.candidate);
                 if (ip) {
-                    document.getElementById('ip-address').textContent = `IP Lokal: ${ip[0]}`;
+                    document.getElementById('ip-address-lokal').textContent = `${ip[0]}`;
                 }
                 pc.close();
             };
@@ -29,6 +17,3 @@
             console.error('Error:', error);
             document.getElementById('ip-address').textContent = 'Gagal mendapatkan IP lokal.';
         });
-    </script>
-</body>
-</html>

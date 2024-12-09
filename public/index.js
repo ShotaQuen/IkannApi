@@ -858,11 +858,11 @@ function renderFolders() {
     const foldersContainer = document.getElementById('folders-container');
     folders.forEach(folder => {
         const folderDiv = document.createElement('div');
-        folderDiv.classList.add('folder-card');
+        folderDiv.classList.add('folder-card', 'bg-gray-700');
 
         folderDiv.innerHTML = `
-            <div class="folder-name">
-                <i class="${folder.icon}"></i> ${folder.name}
+            <div class="folder-name text-white">
+                <i class="${folder.icon} text-white"></i> ${folder.name}
             </div>
             <div class="folder-action">
                 <button onclick="showFeatures('${folder.name}')">Open</button>
@@ -909,9 +909,9 @@ function showFeatures(folderName) {
     filteredFeatures.forEach((feature, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${feature.name}</td>
-            <td>${feature.method}</td>
+            <td class="text-white">${index + 1}</td>
+            <td class="text-white" >${feature.name}</td>
+            <td class="text-white" >${feature.method}</td>
             <td><button class="action-button" onclick="redirectToEndpoint('${feature.endpoint}', '${feature.query}', '${feature.method}')">Open</button></td>
         `;
         featuresTableBody.appendChild(row);

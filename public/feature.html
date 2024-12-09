@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gray-800">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Features and Folders</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- Font Awesome CDN for icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -14,36 +15,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/nav.css">
 <link rel="stylesheet" href="assets/css/feature.css">
+<link rel="stylesheet" href="assets/css/p.css">
 <link rel="stylesheet" href="https://api.arifzyn.tech/css/styles.css">
 </head>
-<body>
-<header class="header">
+<body class="bg-gray-800">
+<header class="header bg-gray-900">
          <nav class="nav navc">
             <div class="nav__data">
-               <a href="#" class="nav__logo">
+               <a href="#" class="nav__logo text-white">
                   <i class="ri-planet-line"></i> Ikann Api
                </a>
                
                <div class="nav__toggle" id="nav-toggle">
-                  <i class="ri-menu-line nav__burger"></i>
-                  <i class="ri-close-line nav__close"></i>
+                  <i class="ri-menu-line nav__burger text-white"></i>
+                  <i class="ri-close-line nav__close text-white"></i>
                </div>
             </div>
 
             <!--=============== NAV MENU ===============-->
             <div class="nav__menu" id="nav-menu">
-               <ul class="nav__list">
-                  <li><a href="index.html" class="nav__link">Home</a></li>
-                  <li><a href="feature.html" class="nav__link">Features</a></li>
-                  <li><a href="ai.html" class="nav__link" id="tombolTambah">My ai</a></li>
+               <ul class="nav__list bg-gray-900">
+                  <li><a href="index.html" class="nav__link text-white bg-gray-900">Home</a></li>
+                  <li><a href="feature.html" class="nav__link text-white bg-gray-900">Features</a></li>
+                  <li><a href="ai.html" class="nav__link text-white bg-gray-900" id="tombolTambah">My ai</a></li>
                </ul>
             </div>
          </nav>
       </header>
-  <div class="container">
+  <div class="container bg-gray-800">
     <!-- Folders Section -->
     <div class="folders-section">
-      <h2>FOLDERS</h2>
+      <h2 class="text-white">FOLDERS</h2>
       <div class="grid grid-cols-1 gap-3" id="folders-container">
         <!-- Folders will be dynamically generated here -->
       </div>
@@ -51,17 +53,17 @@
 
     <!-- Features Section -->
     <div id="features-container" class="features-table-container">
-      <h2>FEATURES</h2>
+      <h2 class="text-white">FEATURES</h2>
       <div class="relative">
-        <input id="searchInput" type="text" class="search-bar" placeholder="Search for features...">
+        <input id="searchInput" type="text" class="search-bar bg-gray-700 text-white" placeholder="Search for features...">
       </div>
-      <table id="featuresTable" class="table-auto w-full bg-white dark:bg-gray-900 rounded-lg text-sm">
+      <table id="featuresTable" class="table-auto w-full bg-gray-700 rounded-lg text-sm">
         <thead>
           <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Method</th>
-            <th>Action</th>
+            <th class="bg-gray-700 text-white">No</th>
+            <th class="bg-gray-700 text-white">Name</th>
+            <th class="bg-gray-700 text-white">Method</th>
+            <th class="bg-gray-700 text-white">Action</th>
           </tr>
         </thead>
         <tbody id="featuresTable-body">
@@ -71,9 +73,9 @@
     </div>
 
     <!-- Info Section (New separate card for Information) -->
-    <div id="info-section" class="info-section">
-      <h3>Folder Information</h3>
-      <p id="info-text">Select a folder to view more details.</p>
+    <div id="info-section" class="info-section bg-gray-700">
+      <h3 class="text-white">Folder Information</h3>
+      <p id="info-text" class="text-white">Select a folder to view more details.</p>
     </div>
   </div>
 <script src="assets/js/nav.js"></script>
